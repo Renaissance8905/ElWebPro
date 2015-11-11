@@ -7,6 +7,7 @@
  */
 
 
+
 $times = array("8:00 am", "9:00 am", "10:00 am", "11:00 am", "12:00 pm", "1:00 pm", "2:00 pm", "3:00 pm", "4:00 pm", "5:00 pm");
 fileCheck($times);
 $file = fopen('signup.txt', 'a');
@@ -20,7 +21,12 @@ while (!feof($file)) {
 }
 
 
-function head() {
+tableMake($times, $slots);
+
+
+
+
+function tableMake($t, $n) {
     print <<<TOP
 <html>
 <head>
@@ -35,19 +41,7 @@ function head() {
 <td>Name</td>
 </thead>
 TOP;
-}
 
-function tail() {
-    print <<<BOTTOM
-</table>
-</form>
-</body>
-</html>
-BOTTOM;
-
-}
-
-function tableMake($t, $n) {
     for($k = 0; $k < count($t); $k++) {
         if($n[$k] == " ") {
             print "<tr><td>$t[$k]</td><td><input type='text' id=$t[$k]></td></tr>";
@@ -56,6 +50,14 @@ function tableMake($t, $n) {
             print "<tr><td>$t[$k]</td><td>$n[$k]</td></tr>";
         }
     }
+
+    print <<<BOTTOM
+</table>
+</form>
+</body>
+</html>
+BOTTOM;
+
 
 }
 
@@ -75,10 +77,7 @@ function fileCheck($t) {
     }
 }
 
-// execute
-head();
-tableMake($times, $slots);
-tail();
+
 
 
 ?>
