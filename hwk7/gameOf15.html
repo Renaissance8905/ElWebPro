@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="gameOf15.css" />
+    <title>Game Of 15</title>
+</head>
+<body>
+    <h1>A Game Of 15</h1>
+    <table id="game" border="0" class="center">
+        <tr>
+            <td><input type="button" id="b00" value="" class="gameBtn"></td>
+            <td><input type="button" id="b01" value="" class="gameBtn"></td>
+            <td><input type="button" id="b02" value="" class="gameBtn"></td>
+            <td><input type="button" id="b03" value="" class="gameBtn"></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="b10" value="" class="gameBtn"></td>
+            <td><input type="button" id="b11" value="" class="gameBtn"></td>
+            <td><input type="button" id="b12" value="" class="gameBtn"></td>
+            <td><input type="button" id="b13" value="" class="gameBtn"></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="b20" value="" class="gameBtn"></td>
+            <td><input type="button" id="b21" value="" class="gameBtn"></td>
+            <td><input type="button" id="b22" value="" class="gameBtn"></td>
+            <td><input type="button" id="b23" value="" class="gameBtn"></td>
+        </tr>
+        <tr>
+            <td><input type="button" id="b30" value="" class="gameBtn"></td>
+            <td><input type="button" id="b31" value="" class="gameBtn"></td>
+            <td><input type="button" id="b32" value="" class="gameBtn"></td>
+            <td><input type="button" id="b33" value="" class="gameBtn"></td>
+        </tr>
+    </table>
+    
+    <script type="text/javascript">
+        var blankLoc = null
+
+        // Array of Possible Board Configurations
+        var configs = [
+            [10,2,3,4,5,null,7,8,9,1,11,12,13,14,15,6],
+            [1,12,3,4,5,6,null,8,9,10,11,2,13,14,15,7],
+            [1,2,13,4,5,6,7,null,9,10,11,12,3,14,15,8],
+            [1,2,3,14,5,6,7,8,null,10,11,12,13,4,15,9],
+            [1,2,3,4,15,6,7,8,9,null,11,12,13,14,5,10],
+            [1,2,3,4,5,10,7,8,9,6,null,12,13,14,15,11],
+            [1,2,3,4,5,6,9,8,7,10,11,null,13,14,15,12],
+            [1,2,3,4,5,6,15,8,9,10,11,12,null,14,7,13],
+            [11,2,3,4,5,6,7,8,9,10,1,12,13,null,15,14],
+            [1,12,3,4,5,6,7,8,9,10,11,2,13,14,null,15]
+        ];
+        // Randomly select a board configuration
+        var j = Math.floor(Math.random() * 10);
+
+        // Ordered Array of cell IDs
+        var ids = [
+            "b00", "b01", "b02", "b03",
+            "b10", "b11", "b12", "b13",
+            "b20", "b21", "b22", "b23",
+            "b30", "b31", "b32", "b33"
+        ];
+
+        // Assign starting values of chosen configuration to cells
+        for (var i = 0; i < 16; i++) {
+            if (configs[j][i] == null) {
+                document.getElementById(ids[i]).value = null;
+                blankLoc = ids[i]
+            } else {
+                document.getElementById(ids[i]).value = configs[j][i].toString()
+            }
+        }
+
+        // Generate handler for each button's clickevent
+        var btns = document.getElementsByClassName("gameBtn");
+        for (i = 0; i < btns.length; i++) {
+            btns[i].onclick = swapper(btns[i].id)
+        }
+
+        function swapper (x) {
+
+            return function() {
+                // ----------Code for swap mechanism here---------
+                //////////////////////////////////////////////////
+
+                // Parse clicked location
+                loc = Number(x.substr(1));
+                locY = Math.floor(loc / 10);
+                locX = loc % 10;
+
+                // Parse current blank location
+                blank = Number(blankLoc.substr(1));
+                blankY = Math.floor(blank / 10);
+                blankX = blank % 10;
+
+                // Check for adjacency
+                if((blankY == locY && Math.abs(blankX - locX) == 1) || (blankX == locX && Math.abs(blankY-locY) == 1)) {
+                    // Process swap if allowed
+                    document.getElementById(blankLoc).value = document.getElementById(x).value.toString();
+                    document.getElementById(x).value = null;
+                    blankLoc = x;
+                }
+
+
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

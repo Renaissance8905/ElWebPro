@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Try To Register!</title>
+</head>
+<body>
+    <h1>Register Here!</h1>
+    <form id="regForm" action="" method="POST">
+        <table border="8">
+            <tr>
+                <td>
+                    <label>Username:</label>
+                </td>
+                <td>
+                    <input name="username", type="text", value="" />
+                </td>
+                <td>
+                    <ul>
+                        <li>Must be 6-10 character in length</li>
+                        <li>Must begin with a letter</li>
+                        <li>May contain only letters and digits</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td>
+                    <label>Password:</label>
+                </td>
+                <td>
+                    <input name="pass", type="password", value="" />
+                </td>
+                <td>
+                    <ul>
+                        <li>Must be 6-10 characters in length</li>
+                        <li>May contain only letters, digits, and _</li>
+                        <li>Must contain uppercase, lowercase, and a number</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Confirm Password:</label>
+                </td>
+                <td>
+                    <input name="pass_repeat", type="password", value="" />
+                </td>
+                <td>
+                    <ul>
+                        <li>Passwords must match</li>
+                        <li>Password is case-sensitive</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <input type = "button" name = "regButton" value = "Register" />
+        <input type = "reset" value = "Clear" />
+
+    </form>
+
+    <script type="text/javascript">
+        document.getElementById("regForm").regButton.onclick = verify;
+        function verify () {
+            var fields = document.getElementById("regForm");
+            var username = fields.username.value;
+            var pass = fields.pass.value;
+            var pass_repeat = fields.pass_repeat.value;
+            if (username.length > 5 && username.length < 11) {
+                alert("userlength");
+                if (username[0].match(/[a-z]/i)) {
+                    alert("user init match");
+                    if (~username.match(/^[a-z0-9]+$/i)) {
+                        alert('user az match');
+                        if (pass == pass_repeat) {
+                            alert("passmatch");
+                            if (5 < pass.length && pass.length < 11) {
+                                alert("passlength ok");
+                                if (~pass.match(/^[a-z0-9_]+$/i)) {
+                                    alert("pass not nonalnum");
+                                    if (pass.match(/[a-z]/)) {
+                                        alert("pass has a lower");
+                                        if (pass.match(/[A-Z]/)) {
+                                            alert("pass has a upper");
+                                            if (pass.match(/[0-9]/)) {
+                                                alert("Passed Validation");
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            alert("Invalid Input");
+        }
+
+    </script>
+
+</body>
+</html>

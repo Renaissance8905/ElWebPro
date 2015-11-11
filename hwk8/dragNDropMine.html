@@ -1,0 +1,38 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE html PUBLIC "-//w3c//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+    <title> Drag and drop </title>
+    <script type = "text/javascript" src = "./dragNDrop.js"></script>
+</head>
+
+<body style = "font-size: 20;">
+
+<img src="images/images1/puzzleback.gif" style="position: absolute; top: 100px; left:100px;" />
+
+<script type="text/javascript">
+    // Randomly select one of the three image sets
+    var dirSelect = Math.floor((Math.random * 3) + 1);
+
+    // Fill array with selected image set
+    var images = new Array();
+    var top = 0;
+    var left = 0;
+
+    for (var k = 1; k < 13; k++) {
+        alert(k);
+        alert(k.toString());
+        images[k-1] = ("images"+dirSelect+"/img"+dirSelect+"-"+i+".jpg");
+        alert(images[k-1].toString);
+        top = Math.floor(Math.random() * 500);
+        left = Math.floor(Math.random() * 500) + 500;
+        document.write("<img src=\""+images[k]+"\" style=\"position: absolute; top:"+top+"; left:"+left+";\" />");
+    }
+</script>
+
+
+
+</body>
+</html>

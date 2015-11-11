@@ -1,0 +1,46 @@
+/* Reset Function*/
+header, footer, nav, article, section, figure, figcaption, h1, h2, h3, ul, li, body, div, p, img
+{
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    border: 0;
+}
+
+
+html {
+    background-color: black;
+}
+
+table.center {
+    margin-right: auto;
+    margin-left: auto;
+    width: 600px;
+    height: 600px;
+    background-color: grey;
+    padding: 1em;
+    border-radius: 10px;
+}
+
+.gameBtn {
+    color: lightgray;
+    background-color: #081f3b;
+    border-radius: 10px;
+    font-size: xx-large;
+    border: none;
+    width: 150px;
+    height: 150px;
+
+}
+
+h1 {
+    color: lightgray;
+    background-color: #081f3b;
+    border: .5em solid grey;
+    border-radius: 10px;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+    font-size: xx-large;
+}

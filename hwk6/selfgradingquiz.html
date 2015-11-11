@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Astronomy Quiz</title>
+</head>
+<body>
+    <h1>Astronomy Quiz</h1>
+    <form id="quiz">
+        <h2>True / False</h2>
+        <div>
+            <strong>1)</strong> According to Kepler the orbit of the earth is a circle with the sun at the center.
+            <input type="radio" name="Q1" value="true" />True
+            <input type="radio" name="Q1" value="false" />False
+        </div>
+        <br>
+        <div>
+            <strong>2)</strong> Ancient astronomers did consider the heliocentric model of the solar system but rejected it because they could not detect parallax.
+            <input type="radio" name="Q2" value="true" />True
+            <input type="radio" name="Q2" value="false" />False
+        </div>
+        <br>
+        <h2>Multiple Choice</h2>
+        <div>
+            <strong>3)</strong> The total amount of energy that a star emits is directly related to its<br>
+            <input type="checkbox" name="Q3a" value="a" />a) surface gravity and magnetic field<br>
+            <input type="checkbox" name="Q3b" value="b" />b) radius and temperature<br>
+            <input type="checkbox" name="Q3c" value="c" />c) pressure and volume<br>
+            <input type="checkbox" name="Q3d" value="d" />d) location and velocity<br>
+        </div>
+        <br>
+        <div>
+            <strong>4)</strong> Stars that live the longest have<br>
+            <input type="checkbox" name="Q4a" value="a" />a) high mass<br>
+            <input type="checkbox" name="Q4b" value="b" />b) high temperature<br>
+            <input type="checkbox" name="Q4c" value="c" />c) lots of hydrogen<br>
+            <input type="checkbox" name="Q4d" value="d" />d) small mass<br>
+        </div>
+        <br>
+        <h2>Fill In The Blank</h2>
+        <div>
+            <strong>5)</strong> A collection of a hundred billion stars, gas, and dust is called a <input type="text" name="Q5" value="" />.<br>
+            <br>
+            <strong>6)</strong> The inverse of the Hubble's constant is a measure of the <input type="text" name="Q6", value="" />.
+        </div>
+        <br>
+        <input type = "button" name = "submitbtn" value = "Grade" />
+        <input type = "reset" value = "Clear" />
+
+    </form>
+
+    <script type="text/javascript">
+        document.getElementById("quiz").submitbtn.onclick = grade;
+        function grade () {
+            var score = 0;
+            var fields = document.getElementById('quiz');
+            var ans_1 = fields.Q1.value;
+            var ans_2 = fields.Q2.value;
+
+            var ans3a = fields.Q3a.checked;
+            var ans3b = fields.Q3b.checked;
+            var ans3c = fields.Q3c.checked;
+            var ans3d = fields.Q3d.checked;
+
+            var ans4a = fields.Q4a.checked;
+            var ans4b = fields.Q4b.checked;
+            var ans4c = fields.Q4c.checked;
+            var ans4d = fields.Q4d.checked;
+
+            var ans_5 = fields.Q5.value;
+            var ans_6 = fields.Q6.value;
+
+
+            if (ans_1 == 'false') {
+                score ++;
+            }
+            if (ans_2 == 'true') {
+                score ++
+            }
+
+            if (ans3b == true) {
+                if (ans3a == false) {
+                    if (ans3c == false) {
+                        if (ans3d == false) {
+                            score ++
+                        }
+                    }
+                }
+            }
+
+            if (ans4d == true) {
+                if (ans4a == false) {
+                    if (ans4b == false) {
+                        if (ans4c == false) {
+                            score ++
+                        }
+                    }
+                }
+            }
+
+            if (ans_5.toLowerCase() == 'galaxy') {
+                score ++
+            }
+            if (ans_6.toLowerCase() == 'age') {
+                score ++
+            }
+
+            alert("Your score is " + score + " / 6");
+
+        }
+    </script>
+
+</body>
+</html>
